@@ -143,31 +143,37 @@
    <!--
    <img src="https://latex.codecogs.com/svg.latex?\Large&space;1 - \frac{1}{m}" title="\Large 1 - \frac{1}{m}" />
    -->  
+   
    ![img_1.png](img/img_1.png)
 2. При вставке: вероятность, что в j-ый бит будет записан 0 (то есть ни одна хеш-функция не записала 1)  
    <!--
    <img src="https://latex.codecogs.com/svg.latex?\Large&space;\left(1 - \frac{1}{m} \right)^{k}" title="\Large \left(1 - \frac{1}{m} \right)^{k}" />
    -->  
+   
    ![img_2.png](img/img_2.png)
 3. При вставке n элементов: вероятность, что в j-ый бит будет записан 0  
    <!--
    <img src="https://latex.codecogs.com/svg.latex?\Large&space;\left(1 - \frac{1}{m} \right)^{nk}" title="\Large \left(1 - \frac{1}{m} \right)^{nk}" />
    -->  
+   
    ![img_3.png](img/img_3.png)
 4. При вставке n элементов: вероятность, что в j-ый бит будет записано 1  
    <!--
    <img src="https://latex.codecogs.com/svg.latex?\Large&space;1 - \left(1 - \frac{1}{m} \right)^{nk}" title="\Large 1 - \left(1 - \frac{1}{m} \right)^{nk}" />
    -->  
+   
    ![img_4.png](img/img_4.png)
 5. При вставке n элементов: вероятность, что ни в один бит не будет записан 0 (во все биты будут записаны 1)  
    <!--
    <img src="https://latex.codecogs.com/svg.latex?\Large&space;\left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k" title="\Large \left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k" />
    -->  
+   
    ![img_5.png](img/img_5.png)
 
 Итог:
 <!--
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;\left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k = \left(1 - \left(1 - \frac{1}{2^{32}} \right)^{2^{10}*32}\right)^{32} = \left(1 - \left(1 - \frac{1}{2^{32}} \right)^{2^{15}}\right)^{32} = 1,74*e^{-164}" title="\Large \left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k" />
--->
+-->  
+
 ![img.png](img/img.png)
 (примерно)
