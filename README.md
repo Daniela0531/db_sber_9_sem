@@ -153,4 +153,5 @@
 
 
 Итог:
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;\left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k = \left(1 - \left(1 - \frac{1}{2^{32}} \right)^{2^{10}*32}\right)^{32} = \left(1 - \left(1 - \frac{1}{2^{32}} \right)^{2^{15}}\right)^{32}" title="\Large \left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k = \left(1 - \left(1 - \frac{1}{2^{32}} \right)^{2^{10}*32}\right)^{32} = \left(1 - \left(1 - \frac{1}{2^{32}} \right)^{2^{15}}\right)^{32} = 1,74*e^{-164}" title="\Large \left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k" />
+(примерно)
