@@ -128,32 +128,24 @@
 ```
 
 Теоретическая часть:
-32
 Используется Bloom-фильтр: массив из m бит, k различных хеш-функций h_1 ... h_k, вставка n записей с различными (уникальными) ключами.
 (m = 2^32 (?), k = 32, n = 2млн, (для хранения требуется 2^30 / 8 / 1024^2 = 512 Мбайт))
 
 1. При вставке: вероятность, что в j-ый бит не будет записана единица i-ой хеш-функцией  
-   $$
-   1 - \frac{1}{m}
-   $$
+   <img src="https://latex.codecogs.com/svg.latex?\Large&space;1 - \frac{1}{m}" title="\Large 1 - \frac{1}{m}" />
+
 2. При вставке: вероятность, что в j-ый бит будет записан 0 (то есть ни одна хеш-функция не записала 1)  
-   $$
-   (1 - \frac{1}{m})^k
-   $$
+   <img src="https://latex.codecogs.com/svg.latex?\Large&space;\left(1 - \frac{1}{m} \right)^{k}" title="\Large \left(1 - \frac{1}{m} \right)^{k}" />
+
 3. При вставке n элементов: вероятность, что в j-ый бит будет записан 0  
-   $$
-   (1 - \frac{1}{m})^nk
-   $$ 
+   <img src="https://latex.codecogs.com/svg.latex?\Large&space;\left(1 - \frac{1}{m} \right)^{nk}" title="\Large \left(1 - \frac{1}{m} \right)^{nk}" />
+
 4. При вставке n элементов: вероятность, что в j-ый бит будет записано 1  
-      $$
-      1 - (1 - \frac{1}{m})^nk
-      $$ 
-5. При вставке n элементов: вероятность, что ни в один бит не будет записан 0  
-   $$
-   (1 - (1 - \frac{1}{m})^nk)^k
-   $$
+   <img src="https://latex.codecogs.com/svg.latex?\Large&space;1 - \left(1 - \frac{1}{m} \right)^{nk}" title="\Large 1 - \left(1 - \frac{1}{m} \right)^{nk}" />
+
+5. При вставке n элементов: вероятность, что ни в один бит не будет записан 0 (во все биты будут записаны 1)  
+   <img src="https://latex.codecogs.com/svg.latex?\Large&space;\left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k" title="\Large \left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k" />
+
 
 Итог:
-$$
-(1 - (1 - \frac{1}{m})^nk)^k = (1 - (1 - \frac{1}{2^32})^2^10*32)^32 = (1 - (1 - \frac{1}{2^32})^2^15)^32
-$$
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k = \left(1 - \left(1 - \frac{1}{2^{32}} \right)^{2^{10}*32}\right)^{32} = \left(1 - \left(1 - \frac{1}{2^{32}} \right)^{2^{15}}\right)^{32}" title="\Large \left(1 - \left(1 - \frac{1}{m} \right)^{nk}\right)^k" />
