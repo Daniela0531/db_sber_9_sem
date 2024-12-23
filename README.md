@@ -10,3 +10,13 @@
 
 Кроме производительности проанализировать cache hit ratio.
 
+(задача в разработке)
+
+```roomsql
+psql -U postgres -d db_for_hw -f init.sql
+pgbench -U postgres -j 3 -c 3 -t 1000 -f insert.sql db_for_hw
+```
+```roomsql
+SELECT sum(heap_blks_hit) / (sum(heap_blks_hit) + sum(heap_blks_read))::float as ratio
+FROM pg_statio_user_tables;
+```
