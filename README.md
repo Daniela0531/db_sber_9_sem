@@ -100,29 +100,33 @@ LIMIT 10;
 ```
 вывод:
 ```roomsql
-                                                                           QUERY PLAN                                                                           
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
- Limit  (cost=14635.17..14635.19 rows=10 width=12) (actual time=230.283..231.363 rows=10 loops=1)
-   ->  Sort  (cost=14635.17..14635.42 rows=101 width=12) (actual time=230.281..231.360 rows=10 loops=1)
+                                                                          QUERY PLAN                                              
+                             
+----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------
+ Limit  (cost=21988.17..21988.19 rows=10 width=12) (actual time=119.492..131.955 rows=10 loops=1)
+   ->  Sort  (cost=21988.17..21988.42 rows=101 width=12) (actual time=119.490..131.951 rows=10 loops=1)
          Sort Key: (count(*)) DESC
          Sort Method: top-N heapsort  Memory: 25kB
-         ->  Finalize GroupAggregate  (cost=14607.40..14632.99 rows=101 width=12) (actual time=230.144..231.321 rows=101 loops=1)
+         ->  Finalize GroupAggregate  (cost=21960.40..21985.99 rows=101 width=12) (actual time=119.299..131.912 rows=101 loops=1)
                Group Key: product_id
-               ->  Gather Merge  (cost=14607.40..14630.97 rows=202 width=12) (actual time=230.137..231.284 rows=303 loops=1)
+               ->  Gather Merge  (cost=21960.40..21983.97 rows=202 width=12) (actual time=119.289..131.841 rows=303 loops=1)
                      Workers Planned: 2
                      Workers Launched: 2
-                     ->  Sort  (cost=13607.37..13607.63 rows=101 width=12) (actual time=222.518..222.522 rows=101 loops=3)
+                     ->  Sort  (cost=20960.37..20960.63 rows=101 width=12) (actual time=112.252..112.259 rows=101 loops=3)
                            Sort Key: product_id
                            Sort Method: quicksort  Memory: 29kB
                            Worker 0:  Sort Method: quicksort  Memory: 29kB
                            Worker 1:  Sort Method: quicksort  Memory: 29kB
-                           ->  Partial HashAggregate  (cost=13603.00..13604.01 rows=101 width=12) (actual time=222.466..222.475 rows=101 loops=3)
+                           ->  Partial HashAggregate  (cost=20956.00..20957.01 rows=101 width=12) (actual time=112.190..112.204 ro
+ws=101 loops=3)
                                  Group Key: product_id
                                  Batches: 1  Memory Usage: 32kB
                                  Worker 0:  Batches: 1  Memory Usage: 32kB
                                  Worker 1:  Batches: 1  Memory Usage: 32kB
-                                 ->  Parallel Seq Scan on purchases  (cost=0.00..11519.67 rows=416667 width=4) (actual time=0.226..160.679 rows=333333 loops=3)
- Planning Time: 3.753 ms
- Execution Time: 232.441 ms
+                                 ->  Parallel Seq Scan on purchases  (cost=0.00..18872.67 rows=416667 width=4) (actual time=0.039.
+.80.568 rows=333333 loops=3)
+ Planning Time: 0.201 ms
+ Execution Time: 132.002 ms
 (22 rows)
 ```
